@@ -7,12 +7,11 @@ var marginBottom = 20;
 var marginLeft = 50;
 var marginRight = 5;
 
-var svg = d3.select("body")
-  .append("svg")
+var svg = d3.select(".parent").append("svg")
   .attr("width", w + marginLeft + marginRight)
   .attr("height", h + marginBottom)
 
-var tooltip = d3.select(".tooltipDiv").append("div")
+var tooltip = d3.select('.parent').append("div")
   .attr("id", "tooltip")
   .style("opacity", 0);
 
@@ -104,8 +103,8 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
         .style('opacity', .9);
       tooltip.html(yearsQuarters[i] + '<br>' + '$' + GDPs[i].toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + ' Billion')
         .attr('data-date', json.data[i][0])
-        .style('left', (i * barWidth) + 60 + 'px')
-        .style('top', h - 50)
+        .style('left', (i * barWidth) + 0 + 'px')
+        .style('top', h - 100)
         .style('transform', 'translateX(60px)');
     })
     .on('mouseout', d => {

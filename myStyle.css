@@ -1,4 +1,29 @@
-h1 {
+* {
+  margin: 0;
+  padding: 0; 
+}
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+.container {
+  height: 560px;
+  width: 900px;
+  margin-top: 50px;
+  /* align-self: center; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.parent {
+  position: absolute;
+}
+#title {
   text-align: center;
 }
 
@@ -21,6 +46,7 @@ rect {
 }
 
 #tooltip {
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
