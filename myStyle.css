@@ -10,3 +10,24 @@ svg {
 rect {
   fill: teal;
 }
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+    /* an SVG attribute, used here to make sure our axis and its tick mark lines are pixel-perfect. 
+       No blurry axes for us! */
+}
+
+#tooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+  width: 170px;
+  height: 70px;
+  background: lightgreen;
+  pointer-events: none; 
+}

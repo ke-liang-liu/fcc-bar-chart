@@ -54,6 +54,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
 
   var xAxisGroup = svg.append('g')
     .call(xAxis)
+    .attr("class", "axis")
     .attr('id', 'x-axis')
     .attr('transform', `translate(${marginLeft}, 560)`);
 
@@ -82,6 +83,7 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
 
   var yAxisGroup = svg.append('g')
     .call(yAxis)
+    .attr("class", "axis")
     .attr('id', 'y-axis')
     .attr('transform', 'translate(50, 0)');
 
@@ -96,8 +98,22 @@ d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/mas
     .attr("height", d => d)
     .attr('data-date', (d, i) => json.data[i][0])
     .attr('data-gdp', (d, i) => json.data[i][1])
-    .append('title')
-    .text(d => d)
+    .on('mouseover', (d, i) => {
+      tooltip.transition()
+        .duration(200)
+        .style('opacity', .9);
+      tooltip.html(yearsQuarters[i] + '<br>' + '$' + GDPs[i].toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + ' Billion')
+        .attr('data-date', json.data[i][0])
+        .style('left', (i * barWidth) + 60 + 'px')
+        .style('top', h - 50)
+        .style('transform', 'translateX(60px)');
+    })
+    .on('mouseout', d => {
+      tooltip.transition()
+        .duration(200)
+        .style('opacity', 0);
+    })
+
 
 
 })
